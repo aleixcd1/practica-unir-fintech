@@ -16,6 +16,12 @@ def sort_list(items, ascending=True):
 
     return sorted(items, reverse=(not ascending))
 
+def sort_list_by_length(items, ascending=True):
+    if not isinstance(items, list):
+        raise RuntimeError(f"No puede ordenar {type(items)}")
+
+    return sorted(items, key=len, reverse=(not ascending))
+
 
 def remove_duplicates_from_list(items):
     return list(set(items))
@@ -46,4 +52,12 @@ if __name__ == "__main__":
     if remove_duplicates:
         word_list = remove_duplicates_from_list(word_list)
 
+    print("Lista original:")
+    print(word_list)
+    print("*************************")
+    print("Lista ordenada:")
     print(sort_list(word_list))
+    print("*************************")
+    print("Lista ordenada por longitud:")
+    print(sort_list_by_length(word_list))
+    print("*************************")
